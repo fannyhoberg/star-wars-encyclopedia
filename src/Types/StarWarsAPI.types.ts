@@ -1,4 +1,4 @@
-interface DataResult {
+export interface FilmDataResult {
   id: number;
   title: string;
   episode_id: string;
@@ -17,6 +17,68 @@ interface DataResult {
 }
 
 export interface FilmResult {
-  data: DataResult[];
+  data: FilmDataResult[];
   total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+}
+
+export interface FilmDetail {
+  id: number;
+  title: string;
+  episode_id: string;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  image_url: string;
+  created: string;
+  edited: string;
+  characters: ArrayData[];
+  planets: ArrayData[];
+  starships: ArrayData[];
+  vehicles: ArrayData[];
+  species: ArrayData[];
+}
+
+export interface ArrayData {
+  id: number;
+  name: string;
+}
+
+export interface ArrayFilm {
+  id: number;
+  title: string;
+}
+
+export interface CharacterDetail {
+  id: number;
+  name: string;
+  birth_year: string;
+  eye_color: string;
+  hair_color: string;
+  height: string;
+  mass: string;
+  skin_color: string;
+  wiki_link: string;
+  image_url: string;
+  affiliations: string[];
+  created: string;
+  edited: string;
+  homeworld: ArrayData[];
+  films: ArrayFilm[];
+  species: ArrayData[];
+  starships: ArrayData[];
+  vehicles: ArrayData[];
+}
+
+export interface PeopleResult {
+  data: CharacterDetail[];
+  total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
 }
