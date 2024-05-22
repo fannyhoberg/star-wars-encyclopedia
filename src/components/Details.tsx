@@ -36,7 +36,7 @@ const DetailView: React.FC<DetailViewProps> = ({ type }) => {
             data = await StarWarsAPI.getFilm(parseInt(id!));
             break;
           case "characters":
-            data = await StarWarsAPI.getCharacter(parseInt(id!));
+            data = await StarWarsAPI.getPerson(parseInt(id!));
             break;
 
           default:

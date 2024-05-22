@@ -27,7 +27,7 @@ export const getPeople = async () => {
   return res.data;
 };
 
-export const getCharacter = async (id: number) => {
+export const getPerson = async (id: number) => {
   const res = await axios.get<CharacterDetail>(
     `https://swapi.thehiveresistance.com/api/people/${id}`
   );

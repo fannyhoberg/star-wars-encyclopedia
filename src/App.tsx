@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Films from "./pages/Films";
 import DetailView from "./components/Details";
 import People from "./pages/People";
+import FilmDetailPage from "./pages/FilmDetailPage";
 
 function App() {
   return (
@@ -18,11 +19,11 @@ function App() {
           <Route path="/films" element={<Films />}></Route>
           <Route path="/people" element={<People />}></Route>
 
-          <Route path="/films/:id" element={<DetailView type="films" />} />
-          <Route
-            path="/people/:id"
-            element={<DetailView type="characters" />}
-          />
+          <Route path="/films/:id" element={<FilmDetailPage />} />
+          {/* // <Route
+          //   path="/people/:id"
+          //   element={<FilmDetailPage />}
+          // /> */}
         </Routes>
       </Container>
     </div>

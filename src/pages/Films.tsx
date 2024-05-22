@@ -1,14 +1,15 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
-import { FilmResult } from "../Types/StarWarsAPI.types";
+import { FilmDetail, FilmResult } from "../Types/StarWarsAPI.types";
 import { useNavigate } from "react-router-dom";
+import FilmDetails from "../components/FilmDetails";
 
 const Films = () => {
   const [result, setResult] = useState<FilmResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  //   const [detail, setDetail] = useState<FilmDetail | null>(null);
+  const [detail, setDetail] = useState<FilmDetail | null>(null);
 
   const navigate = useNavigate();
 
@@ -16,7 +17,7 @@ const Films = () => {
     setResult(null);
     setIsLoading(true);
     setError(null);
-    // setDetail(null);
+    setDetail(null);
 
     try {
       const data = await StarWarsAPI.getFilms();
@@ -36,22 +37,23 @@ const Films = () => {
     setIsLoading(false);
   };
 
-  //   const getFilmDetails = async (id: number) => {
-  //     setResult(null);
-  //     setDetail(null);
+  // const getFilmDetails = async (id: number) => {
+  //   setResult(null);
+  //   setDetail(null);
+  //   navigate(`/films/${id}`);
 
-  //     try {
-  //       const data = await StarWarsAPI.getFilm(id);
+  //   try {
+  //     const data = await StarWarsAPI.getFilm(id);
 
-  //       setDetail(data);
-  //     } catch (err) {
-  //       if (err instanceof Error) {
-  //         setError(err.message);
-  //       } else {
-  //         setError("The force is not strong with this one 🥲");
-  //       }
+  //     setDetail(data);
+  //   } catch (err) {
+  //     if (err instanceof Error) {
+  //       setError(err.message);
+  //     } else {
+  //       setError("The force is not strong with this one 🥲");
   //     }
-  //   };
+  //   }
+  // };
 
   useEffect(() => {
     films();
@@ -103,9 +105,12 @@ const Films = () => {
                       <span className="card-title">{res.director}</span>
                     </div>
                     <div>
+                      {/* <Button onClick={() => getFilmDetails(res.id)}>
+                        Read more
+                      </Button> */}
                       <Button onClick={() => navigate(`/films/${res.id}`)}>
                         Read more
-                      </Button>{" "}
+                      </Button>
                     </div>
                   </div>
                 </Col>
@@ -115,62 +120,7 @@ const Films = () => {
         </div>
       )}
 
-      {/* {detail && (
-        // <DetailView type={films}></DetailView>
-        // <Container>
-        //   <div className="card h-50 custom-card-size">
-        //     <div>
-        //       <Button>Back</Button>
-        //     </div>
-
-        //     <img
-        //       src={detail.image_url}
-        //       className="card-img-top"
-        //       alt={detail.title}
-        //     />
-        //     <div className="card-body">
-        //       <h2 className="card-title">{detail.title}</h2>
-        //       <p>Episode: {detail.episode_id}</p>
-
-        //       <p>Director: {detail.director}</p>
-        //       <p>Producer: {detail.producer}</p>
-        //       <p>Release date: {detail.release_date}</p>
-        //       <p>{detail.opening_crawl}</p>
-        //       <div className="card-title">
-        //         <h4>Characters: </h4>
-        //         {detail.characters.map((char) => (
-        //           <p>{char.name}</p>
-        //         ))}
-        //       </div>
-        //       <div className="card-title">
-        //         <h4>Planets: </h4>
-        //         {detail.planets.map((plan) => (
-        //           <p>{plan.name}</p>
-        //         ))}
-        //       </div>
-
-        //       <div className="card-title">
-        //         <h4>Starships: </h4>
-        //         {detail.starships.map((star) => (
-        //           <p>{star.name}</p>
-        //         ))}
-        //       </div>
-        //       <div className="card-title">
-        //         <h4>Species: </h4>
-        //         {detail.species.map((spec) => (
-        //           <p>{spec.name}</p>
-        //         ))}
-        //       </div>
-        //       <div className="card-title">
-        //         <h4>Vehicles: </h4>
-        //         {detail.vehicles.map((vehicle) => (
-        //           <p>{vehicle.name}</p>
-        //         ))}
-        //       </div>
-        //     </div>
-        //   </div>
-        // </Container>
-      )} */}
+      {/* {detail && <FilmDetails detail={detail}></FilmDetails>} */}
     </>
   );
 };
