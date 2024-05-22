@@ -18,6 +18,7 @@ export interface FilmDataResult {
 
 export interface FilmResult {
   data: FilmDataResult[];
+  current_page: number;
   total: number;
   from: number;
   last_page: number;
@@ -76,6 +77,7 @@ export interface CharacterDetail {
 
 export interface PeopleResult {
   data: CharacterDetail[];
+  current_page: number;
   total: number;
   from: number;
   last_page: number;

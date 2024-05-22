@@ -3,22 +3,24 @@ import { useNavigate } from "react-router-dom";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { PeopleResult } from "../Types/StarWarsAPI.types";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import Pagination from "../components/Pagination";
 
 const People = () => {
   const [result, setResult] = useState<PeopleResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
 
-  const people = async () => {
+  const people = async (page: number) => {
     setResult(null);
     setIsLoading(true);
     setError(null);
 
     try {
-      const data = await StarWarsAPI.getPeople();
-      await new Promise((r) => setTimeout(r, 2000));
+      const data = await StarWarsAPI.getPeople(page);
+      await new Promise((r) => setTimeout(r, 1000));
 
       console.log("data", data);
 
@@ -35,8 +37,8 @@ const People = () => {
   };
 
   useEffect(() => {
-    people();
-  }, []);
+    people(page);
+  }, [page]);
 
   return (
     <>
@@ -58,7 +60,7 @@ const People = () => {
 
       {result !== null && (
         <div>
-          <p>Showing {result.total} films</p>
+          <p>Showing {result.total} people</p>
           <Container fluid className="custom-container">
             <Row className="g-3">
               {result.data.map((res) => (
@@ -70,12 +72,14 @@ const People = () => {
                   key={res.id}
                   className="d-flex"
                 >
-                  <div className="card h-50">
-                    <img
-                      src={res.image_url}
-                      className="card-img-top"
-                      alt={res.name}
-                    />
+                  <div className="card h-100">
+                    <div>
+                      <img
+                        src={res.image_url}
+                        className="card-img-top"
+                        alt={res.name}
+                      />
+                    </div>
                     <div className="card-body">
                       <h3 className="card-title">{res.name}</h3>
                     </div>
@@ -89,6 +93,18 @@ const People = () => {
               ))}
             </Row>
           </Container>
+          <Pagination
+            previousPage={result.from > 1}
+            nextPage={result.current_page < result.last_page}
+            onNextPage={() => {
+              setPage((prevValue) => prevValue + 1);
+            }}
+            onPreviousPage={() => {
+              setPage((prevValue) => prevValue - 1);
+            }}
+            page={result.current_page}
+            totalPages={result.last_page}
+          />
         </div>
       )}
     </>

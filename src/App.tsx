@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Navigation from "./components/Navigation";
 import Container from "react-bootstrap/Container";
 import Films from "./pages/Films";
-import DetailView from "./components/Details";
 import People from "./pages/People";
 import FilmDetailPage from "./pages/FilmDetailPage";
 

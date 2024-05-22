@@ -6,9 +6,9 @@ import {
   PeopleResult,
 } from "../Types/StarWarsAPI.types";
 
-export const getFilms = async () => {
+export const getFilms = async (page: number) => {
   const res = await axios.get<FilmResult>(
-    "https://swapi.thehiveresistance.com/api/films/"
+    `https://swapi.thehiveresistance.com/api/films?page=${page}`
   );
   return res.data;
 };
@@ -20,9 +20,9 @@ export const getFilm = async (id: number) => {
   return res.data;
 };
 
-export const getPeople = async () => {
+export const getPeople = async (page: number) => {
   const res = await axios.get<PeopleResult>(
-    "https://swapi.thehiveresistance.com/api/people/"
+    `https://swapi.thehiveresistance.com/api/people?page=${page}`
   );
   return res.data;
 };

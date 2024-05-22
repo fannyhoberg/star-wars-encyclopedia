@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import FilmDetails from "../components/FilmDetails";
 import { FilmDetail } from "../Types/StarWarsAPI.types";

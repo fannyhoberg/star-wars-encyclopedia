@@ -1,15 +1,18 @@
 import { Button, Col, Container, Row } from "react-bootstrap";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
-import { FilmDetail, FilmResult } from "../Types/StarWarsAPI.types";
+import { FilmResult } from "../Types/StarWarsAPI.types";
 import { useNavigate } from "react-router-dom";
-import FilmDetails from "../components/FilmDetails";
+import Pagination from "../components/Pagination";
+// import FilmDetails from "../components/FilmDetails";
 
 const Films = () => {
   const [result, setResult] = useState<FilmResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [detail, setDetail] = useState<FilmDetail | null>(null);
+  const [page, setPage] = useState(1);
+
+  // const [detail, setDetail] = useState<FilmDetail | null>(null);
 
   const navigate = useNavigate();
 
@@ -17,11 +20,11 @@ const Films = () => {
     setResult(null);
     setIsLoading(true);
     setError(null);
-    setDetail(null);
+    // setDetail(null);
 
     try {
-      const data = await StarWarsAPI.getFilms();
-      await new Promise((r) => setTimeout(r, 2000));
+      const data = await StarWarsAPI.getFilms(page);
+      await new Promise((r) => setTimeout(r, 1000));
 
       console.log("data", data);
 
@@ -91,7 +94,7 @@ const Films = () => {
                   key={res.id}
                   className="d-flex"
                 >
-                  <div className="card h-50">
+                  <div className="card h-100">
                     <img
                       src={res.image_url}
                       className="card-img-top"
@@ -117,6 +120,18 @@ const Films = () => {
               ))}
             </Row>
           </Container>
+          <Pagination
+            previousPage={result.from > 1}
+            nextPage={result.current_page < result.last_page}
+            onNextPage={() => {
+              setPage((prevValue) => prevValue + 1);
+            }}
+            onPreviousPage={() => {
+              setPage((prevValue) => prevValue - 1);
+            }}
+            page={result.current_page}
+            totalPages={result.last_page}
+          />
         </div>
       )}
 
