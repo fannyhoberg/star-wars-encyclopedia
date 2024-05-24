@@ -43,25 +43,35 @@ const People = () => {
   return (
     <>
       {isLoading && (
-        <div>
-          <iframe
-            src="https://giphy.com/embed/3ornka9rAaKRA2Rkac"
-            width="480"
-            height="204"
-            allowFullScreen
-          ></iframe>
-          <p>
-            <a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornka9rAaKRA2Rkac"></a>
-          </p>
-        </div>
+        <Container
+          fluid
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "50vh" }}
+        >
+          <Row>
+            <Col className="text-center">
+              <iframe
+                src="https://giphy.com/embed/3ornka9rAaKRA2Rkac"
+                width="480"
+                height="204"
+                allowFullScreen
+                title="Loading GIF"
+              ></iframe>
+              <p>
+                <a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornka9rAaKRA2Rkac"></a>
+              </p>
+            </Col>
+          </Row>
+        </Container>
       )}
 
       {error && <p>{error}</p>}
 
       {result !== null && (
         <div>
-          <p>Showing {result.total} people</p>
           <Container fluid className="custom-container">
+            <p>Showing {result.total} people</p>
+
             <Row className="g-3">
               {result.data.map((res) => (
                 <Col
@@ -72,7 +82,7 @@ const People = () => {
                   key={res.id}
                   className="d-flex"
                 >
-                  <div className="card h-100">
+                  <div className="card h-100 custom-card">
                     <div>
                       <img
                         src={res.image_url || "/images/kitty.jpg"}
@@ -83,8 +93,11 @@ const People = () => {
                     <div className="card-body">
                       <h3 className="card-title">{res.name}</h3>
                     </div>
-                    <div>
-                      <Button onClick={() => navigate(`/people/${res.id}`)}>
+                    <div className="d-flex justify-content-center mb-3">
+                      <Button
+                        className="custom-button"
+                        onClick={() => navigate(`/people/${res.id}`)}
+                      >
                         Read more
                       </Button>
                     </div>
@@ -93,6 +106,7 @@ const People = () => {
               ))}
             </Row>
           </Container>
+
           <Pagination
             previousPage={result.from > 1}
             nextPage={result.current_page < result.last_page}

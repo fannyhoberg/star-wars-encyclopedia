@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  CharacterDetail,
+  PeopleDetail,
   FilmDetail,
   FilmResult,
   PeopleResult,
@@ -28,7 +28,7 @@ export const getPeople = async (page: number) => {
 };
 
 export const getPerson = async (id: number) => {
-  const res = await axios.get<CharacterDetail>(
+  const res = await axios.get<PeopleDetail>(
     `https://swapi.thehiveresistance.com/api/people/${id}`
   );
   return res.data;

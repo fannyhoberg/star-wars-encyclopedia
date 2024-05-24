@@ -22,9 +22,9 @@ const Pagination: React.FC<PaginationProps> = ({
     <div className="d-flex justify-content-between align-items-center mt-4">
       <div className="prev">
         <Button
+          className="primary-button"
           disabled={!previousPage}
           onClick={onPreviousPage}
-          variant="light"
         >
           Previous Page
         </Button>
@@ -36,7 +36,11 @@ const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       <div className="next">
-        <Button disabled={!nextPage} onClick={onNextPage} variant="light">
+        <Button
+          className="primary-button"
+          disabled={!nextPage}
+          onClick={onNextPage}
+        >
           Next Page
         </Button>
       </div>

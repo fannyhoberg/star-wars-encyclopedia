@@ -68,7 +68,7 @@ export interface PeopleDetail {
   affiliations: string[];
   created: string;
   edited: string;
-  homeworld: ArrayData[];
+  homeworld: ArrayData;
   films: ArrayFilm[];
   species: ArrayData[];
   starships: ArrayData[];

@@ -10,26 +10,31 @@ type FilmDetailsProps = {
 const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
   const navigate = useNavigate();
 
-  const handlePeopleUrl = (charId: number) => {
-    navigate(`/people/${charId}`);
-  };
-
   return (
     <>
       <Container>
         <div>
-          <Button onClick={() => navigate(-1)}>Back to previous</Button>
+          <Button className="primary-button" onClick={() => navigate(-1)}>
+            Back to previous
+          </Button>
         </div>
         <div>
-          <Button onClick={() => navigate(`/films/`)}>Go to Films</Button>
+          <Button
+            className="primary-button"
+            onClick={() => navigate(`/films/`)}
+          >
+            Go to Films
+          </Button>
         </div>
 
         <div className="card h-50 custom-card-size">
-          <img
-            src={detail.image_url}
-            className="card-img-top"
-            alt={detail.title}
-          />
+          <div className="custom-img-size">
+            <img
+              src={detail.image_url}
+              className="card-img-top"
+              alt={detail.title}
+            />
+          </div>
           <div className="card-body">
             <h2 className="card-title">{detail.title}</h2>
             <p>Episode: {detail.episode_id}</p>
@@ -37,16 +42,18 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
             <p>Director: {detail.director}</p>
             <p>Producer: {detail.producer}</p>
             <p>Release date: {detail.release_date}</p>
-            <p>{detail.opening_crawl}</p>
+            <p>
+              <i>{detail.opening_crawl}</i>
+            </p>
             <div className="card-title">
               <h4>Characters: </h4>
               {detail.characters.map((char: ArrayData) => (
                 <p
                   key={char.id}
-                  onClick={() => handlePeopleUrl(char.id)}
-                  style={{ cursor: "pointer", color: "blue" }}
+                  onClick={() => navigate(`/people/${char.id}`)}
+                  className="custom-link"
                 >
-                  {char.name}
+                  <strong>{char.name}</strong>
                 </p>
               ))}
             </div>

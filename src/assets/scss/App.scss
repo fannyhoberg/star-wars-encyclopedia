@@ -1,26 +1,61 @@
 @import "bootstrap/scss/bootstrap";
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//   margin-bottom: 0.75em;
-// }
-
 #App {
   min-height: 100vh;
-  background-color: gray;
+  background-color: lightgray;
 }
 
 .custom-card-size {
+  width: 70%;
+  margin: auto;
+}
+
+.custom-img-size {
   width: 50%;
   margin: auto;
 }
 
-.custom-card-img {
-  height: 200px;
-  // width: 100%;
-  object-fit: cover;
+.custom-card {
+  height: 100%;
+}
+
+// BUTTONS
+
+.primary-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+
+  &:hover {
+    background-color: darkblue;
+  }
+}
+
+.custom-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #ff5722;
+  color: #fff;
+  border-color: #ff5722;
+
+  &:hover {
+    background-color: brown;
+  }
+}
+
+.custom-link {
+  color: #ff5722;
+  cursor: pointer;
+
+  &:hover {
+    color: brown;
+  }
 }

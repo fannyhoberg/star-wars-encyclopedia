@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { FilmResult } from "../Types/StarWarsAPI.types";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
-// import FilmDetails from "../components/FilmDetails";
 
 const Films = () => {
   const [result, setResult] = useState<FilmResult | null>(null);
@@ -12,15 +11,12 @@ const Films = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
 
-  // const [detail, setDetail] = useState<FilmDetail | null>(null);
-
   const navigate = useNavigate();
 
   const films = async () => {
     setResult(null);
     setIsLoading(true);
     setError(null);
-    // setDetail(null);
 
     try {
       const data = await StarWarsAPI.getFilms(page);
@@ -40,24 +36,6 @@ const Films = () => {
     setIsLoading(false);
   };
 
-  // const getFilmDetails = async (id: number) => {
-  //   setResult(null);
-  //   setDetail(null);
-  //   navigate(`/films/${id}`);
-
-  //   try {
-  //     const data = await StarWarsAPI.getFilm(id);
-
-  //     setDetail(data);
-  //   } catch (err) {
-  //     if (err instanceof Error) {
-  //       setError(err.message);
-  //     } else {
-  //       setError("The force is not strong with this one 🥲");
-  //     }
-  //   }
-  // };
-
   useEffect(() => {
     films();
   }, []);
@@ -65,25 +43,35 @@ const Films = () => {
   return (
     <>
       {isLoading && (
-        <div>
-          <iframe
-            src="https://giphy.com/embed/3ornka9rAaKRA2Rkac"
-            width="480"
-            height="204"
-            allowFullScreen
-          ></iframe>
-          <p>
-            <a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornka9rAaKRA2Rkac"></a>
-          </p>
-        </div>
+        <Container
+          fluid
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "50vh" }}
+        >
+          <Row>
+            <Col className="text-center">
+              <iframe
+                src="https://giphy.com/embed/3ornka9rAaKRA2Rkac"
+                width="480"
+                height="204"
+                allowFullScreen
+                title="Loading GIF"
+              ></iframe>
+              <p>
+                <a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornka9rAaKRA2Rkac"></a>
+              </p>
+            </Col>
+          </Row>
+        </Container>
       )}
 
       {error && <p>{error}</p>}
 
       {result !== null && (
         <div>
-          <p>Showing {result.total} films</p>
           <Container fluid className="custom-container">
+            <p>Showing {result.total} films</p>
+
             <Row className="g-3">
               {result.data.map((res) => (
                 <Col
@@ -95,11 +83,13 @@ const Films = () => {
                   className="d-flex"
                 >
                   <div className="card h-100">
-                    <img
-                      src={res.image_url}
-                      className="card-img-top"
-                      alt={res.title}
-                    />
+                    <div className="card h-20">
+                      <img
+                        src={res.image_url}
+                        className="card-img-top"
+                        alt={res.title}
+                      />
+                    </div>
                     <div className="card-body">
                       <span className="card-title">
                         Episode {res.episode_id}
@@ -107,11 +97,11 @@ const Films = () => {
                       <h3 className="card-title">{res.title}</h3>
                       <span className="card-title">{res.director}</span>
                     </div>
-                    <div>
-                      {/* <Button onClick={() => getFilmDetails(res.id)}>
-                        Read more
-                      </Button> */}
-                      <Button onClick={() => navigate(`/films/${res.id}`)}>
+                    <div className="d-flex justify-content-center mb-3">
+                      <Button
+                        className="custom-button"
+                        onClick={() => navigate(`/films/${res.id}`)}
+                      >
                         Read more
                       </Button>
                     </div>
@@ -120,6 +110,7 @@ const Films = () => {
               ))}
             </Row>
           </Container>
+
           <Pagination
             previousPage={result.from > 1}
             nextPage={result.current_page < result.last_page}
@@ -134,8 +125,6 @@ const Films = () => {
           />
         </div>
       )}
-
-      {/* {detail && <FilmDetails detail={detail}></FilmDetails>} */}
     </>
   );
 };
