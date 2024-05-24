@@ -38,7 +38,6 @@ const FilmDetailPage = () => {
       {error && <div>{error}</div>}
 
       {detail && <FilmDetails detail={detail}></FilmDetails>}
-      <div>FilmDetailPage</div>
     </>
   );
 };

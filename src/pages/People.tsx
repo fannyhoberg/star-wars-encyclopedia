@@ -75,7 +75,7 @@ const People = () => {
                   <div className="card h-100">
                     <div>
                       <img
-                        src={res.image_url || "assets/images/kitty.jpg"}
+                        src={res.image_url || "/images/kitty.jpg"}
                         className="card-img-top"
                         alt={res.name}
                       />

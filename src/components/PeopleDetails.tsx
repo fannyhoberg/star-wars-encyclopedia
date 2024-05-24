@@ -20,7 +20,7 @@ const PeopleDetails: React.FC<PeopleDetailsProps> = ({ detail }) => {
         <Button onClick={() => navigate(-1)}>Back to previous</Button>
       </div>
       <div>
-        <Button onClick={() => navigate(`/people/`)}>Back to People</Button>
+        <Button onClick={() => navigate(`/people/`)}>Go to People</Button>
       </div>
 
       <div className="card h-50 custom-card-size">

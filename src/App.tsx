@@ -7,6 +7,7 @@ import Films from "./pages/Films";
 import People from "./pages/People";
 import FilmDetailPage from "./pages/FilmDetailPage";
 import PeopleDetailPage from "./pages/PeopleDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
 
           <Route path="/films/:id" element={<FilmDetailPage />} />
           <Route path="/people/:id" element={<PeopleDetailPage />} />
+
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
     </div>

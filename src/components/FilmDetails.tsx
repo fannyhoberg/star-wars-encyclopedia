@@ -21,7 +21,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
           <Button onClick={() => navigate(-1)}>Back to previous</Button>
         </div>
         <div>
-          <Button onClick={() => navigate(`/films/`)}>Back to Films</Button>
+          <Button onClick={() => navigate(`/films/`)}>Go to Films</Button>
         </div>
 
         <div className="card h-50 custom-card-size">
