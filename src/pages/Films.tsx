@@ -13,7 +13,7 @@ const Films = () => {
 
   const navigate = useNavigate();
 
-  const films = async () => {
+  const films = async (page: number) => {
     setResult(null);
     setIsLoading(true);
     setError(null);
@@ -37,8 +37,8 @@ const Films = () => {
   };
 
   useEffect(() => {
-    films();
-  }, []);
+    films(page);
+  }, [page]);
 
   return (
     <>

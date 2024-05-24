@@ -12,7 +12,7 @@ const PeopleDetailPage = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const getFilmDetails = async () => {
+    const getPersonDetails = async () => {
       setIsLoading(true);
       setError(null);
       setDetail(null);
@@ -30,7 +30,7 @@ const PeopleDetailPage = () => {
       }
       setIsLoading(false);
     };
-    getFilmDetails();
+    getPersonDetails();
   }, []);
   return (
     <>
@@ -39,7 +39,6 @@ const PeopleDetailPage = () => {
       {error && <div>{error}</div>}
 
       {detail && <PeopleDetails detail={detail}></PeopleDetails>}
-      <div>People detail page</div>
     </>
   );
 };

@@ -57,7 +57,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
                 </p>
               ))}
             </div>
-            <div className="card-title">
+            {/* <div className="card-title">
               <h4>Planets: </h4>
               {detail.planets.map((plan) => (
                 <p>{plan.name}</p>
@@ -81,7 +81,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
               {detail.vehicles.map((vehicle) => (
                 <p>{vehicle.name}</p>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>

@@ -21,7 +21,7 @@ const Navigation = () => {
               People
             </Nav.Link>
 
-            <Nav.Link as={NavLink} end to="/planets">
+            {/* <Nav.Link as={NavLink} end to="/planets">
               Planets
             </Nav.Link>
 
@@ -35,7 +35,7 @@ const Navigation = () => {
 
             <Nav.Link as={NavLink} end to="/vehicles">
               Vehicles
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
