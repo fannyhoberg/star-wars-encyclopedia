@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Films from "./pages/Films";
 import People from "./pages/People";
 import FilmDetailPage from "./pages/FilmDetailPage";
+import PeopleDetailPage from "./pages/PeopleDetailPage";
 
 function App() {
   return (
@@ -19,10 +20,7 @@ function App() {
           <Route path="/people" element={<People />}></Route>
 
           <Route path="/films/:id" element={<FilmDetailPage />} />
-          {/* // <Route
-          //   path="/people/:id"
-          //   element={<FilmDetailPage />}
-          // /> */}
+          <Route path="/people/:id" element={<PeopleDetailPage />} />
         </Routes>
       </Container>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { FilmDetail } from "../Types/StarWarsAPI.types";
+import { ArrayData, FilmDetail } from "../Types/StarWarsAPI.types";
 
 type FilmDetailsProps = {
   detail: FilmDetail;
@@ -10,10 +10,19 @@ type FilmDetailsProps = {
 const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
   const navigate = useNavigate();
 
+  const handlePeopleUrl = (charId: number) => {
+    navigate(`/people/${charId}`);
+  };
+
   return (
     <>
       <Container>
-        <Button onClick={() => navigate(-1)}>Go back</Button>
+        <div>
+          <Button onClick={() => navigate(-1)}>Back to previous</Button>
+        </div>
+        <div>
+          <Button onClick={() => navigate(`/films/`)}>Back to Films</Button>
+        </div>
 
         <div className="card h-50 custom-card-size">
           <img
@@ -31,8 +40,14 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
             <p>{detail.opening_crawl}</p>
             <div className="card-title">
               <h4>Characters: </h4>
-              {detail.characters.map((char) => (
-                <p>{char.name}</p>
+              {detail.characters.map((char: ArrayData) => (
+                <p
+                  key={char.id}
+                  onClick={() => handlePeopleUrl(char.id)}
+                  style={{ cursor: "pointer", color: "blue" }}
+                >
+                  {char.name}
+                </p>
               ))}
             </div>
             <div className="card-title">

@@ -54,7 +54,7 @@ export interface ArrayFilm {
   title: string;
 }
 
-export interface CharacterDetail {
+export interface PeopleDetail {
   id: number;
   name: string;
   birth_year: string;
@@ -76,7 +76,7 @@ export interface CharacterDetail {
 }
 
 export interface PeopleResult {
-  data: CharacterDetail[];
+  data: PeopleDetail[];
   current_page: number;
   total: number;
   from: number;
