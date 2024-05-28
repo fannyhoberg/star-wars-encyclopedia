@@ -2,7 +2,7 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { useEffect, useState } from "react";
 import { FilmResult } from "../Types/StarWarsAPI.types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
 const Films = () => {
@@ -10,6 +10,9 @@ const Films = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = parseInt(searchParams.get("page") || "1");
 
   const navigate = useNavigate();
 
@@ -36,9 +39,22 @@ const Films = () => {
     setIsLoading(false);
   };
 
+  const previousPage = async () => {
+    const newPage = page - 1;
+    setSearchParams({ page: newPage.toString() });
+    setPage(newPage);
+  };
+
+  const nextPage = async () => {
+    const newPage = page + 1;
+    setSearchParams({ page: newPage.toString() });
+    setPage(newPage);
+  };
+
   useEffect(() => {
-    films(page);
-  }, [page]);
+    setPage(currentPage);
+    films(currentPage);
+  }, [currentPage, searchParams]);
 
   return (
     <>
@@ -114,12 +130,8 @@ const Films = () => {
           <Pagination
             previousPage={result.from > 1}
             nextPage={result.current_page < result.last_page}
-            onNextPage={() => {
-              setPage((prevValue) => prevValue + 1);
-            }}
-            onPreviousPage={() => {
-              setPage((prevValue) => prevValue - 1);
-            }}
+            onNextPage={nextPage}
+            onPreviousPage={previousPage}
             page={result.current_page}
             totalPages={result.last_page}
           />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { PeopleResult } from "../Types/StarWarsAPI.types";
 import { Button, Col, Container, Row } from "react-bootstrap";
@@ -10,6 +10,12 @@ const People = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const currentPage = parseInt(searchParams.get("page") || "1");
+
+  console.log("currentPage", currentPage);
+  console.log("page", page);
 
   const navigate = useNavigate();
 
@@ -36,9 +42,22 @@ const People = () => {
     setIsLoading(false);
   };
 
+  const previousPage = async () => {
+    const newPage = page - 1;
+    setSearchParams({ page: newPage.toString() });
+    setPage(newPage);
+  };
+
+  const nextPage = async () => {
+    const newPage = page + 1;
+    setSearchParams({ page: newPage.toString() });
+    setPage(newPage);
+  };
+
   useEffect(() => {
-    people(page);
-  }, [page]);
+    setPage(currentPage);
+    people(currentPage);
+  }, [currentPage]);
 
   return (
     <>
@@ -85,7 +104,7 @@ const People = () => {
                   <div className="card h-100 custom-card">
                     <div>
                       <img
-                        src={res.image_url || "/images/kitty.jpg"}
+                        src={res.image_url}
                         className="card-img-top"
                         alt={res.name}
                       />
@@ -110,12 +129,8 @@ const People = () => {
           <Pagination
             previousPage={result.from > 1}
             nextPage={result.current_page < result.last_page}
-            onNextPage={() => {
-              setPage((prevValue) => prevValue + 1);
-            }}
-            onPreviousPage={() => {
-              setPage((prevValue) => prevValue - 1);
-            }}
+            onNextPage={nextPage}
+            onPreviousPage={previousPage}
             page={result.current_page}
             totalPages={result.last_page}
           />
