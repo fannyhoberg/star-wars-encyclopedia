@@ -84,6 +84,7 @@ const FilmDetails: React.FC<FilmDetailsProps> = ({ detail }) => {
             </div> */}
           </div>
         </div>
+        <div>FilmDetails</div>
       </Container>
     </>
   );

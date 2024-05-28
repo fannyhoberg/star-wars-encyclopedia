@@ -37,7 +37,10 @@ const FilmDetailPage = () => {
 
       {error && <div>{error}</div>}
 
+      {/* {detail && <Details detail={detail}></Details>} */}
       {detail && <FilmDetails detail={detail}></FilmDetails>}
+
+      <div>FilmDetailPage</div>
     </>
   );
 };

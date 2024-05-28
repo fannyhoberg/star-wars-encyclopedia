@@ -84,3 +84,39 @@ export interface PeopleResult {
   first_page_url: string;
   last_page_url: string;
 }
+
+export interface Resource {
+  id: string;
+  name: string;
+  image_url?: string;
+  type: "films" | "people" | "planets" | "species" | "starships" | "vehicles";
+
+  // Films
+  title: string;
+  episode_id: string;
+  opening_crawl: string;
+  director: string;
+  producer: string;
+  release_date: string;
+  created: string;
+  edited: string;
+  characters: ArrayData[];
+  planets: ArrayData[];
+  starships: ArrayData[];
+  vehicles: ArrayData[];
+  species: ArrayData[];
+
+  // People
+  birth_year: string;
+  eye_color: string;
+  hair_color: string;
+  height: string;
+  mass: string;
+  skin_color: string;
+  wiki_link: string;
+  affiliations: string[];
+  homeworld: ArrayData;
+  films: ArrayFilm[];
+
+  // Lägg till fler gemensamma attribut här
+}

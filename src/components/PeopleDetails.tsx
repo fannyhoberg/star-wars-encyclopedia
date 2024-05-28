@@ -61,6 +61,7 @@ const PeopleDetails: React.FC<PeopleDetailsProps> = ({ detail }) => {
           </div> */}
         </div>
       </div>
+      <div>PeopleDetails</div>
     </Container>
   );
 };

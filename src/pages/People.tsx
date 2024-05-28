@@ -93,6 +93,8 @@ const People = () => {
 
             <Row className="g-3">
               {result.data.map((res) => (
+                // <Details key={res.id} resource={res} />
+
                 <Col
                   xs={12}
                   sm={6}

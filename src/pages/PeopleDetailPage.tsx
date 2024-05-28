@@ -38,7 +38,10 @@ const PeopleDetailPage = () => {
 
       {error && <div>{error}</div>}
 
+      {/* {detail && <Details detail={detail}></Details>} */}
       {detail && <PeopleDetails detail={detail}></PeopleDetails>}
+
+      <div>PeopleDetailPage</div>
     </>
   );
 };
