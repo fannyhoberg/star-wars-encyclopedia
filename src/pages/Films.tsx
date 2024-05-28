@@ -54,7 +54,7 @@ const Films = () => {
   useEffect(() => {
     setPage(currentPage);
     films(currentPage);
-  }, [currentPage, searchParams]);
+  }, [currentPage]);
 
   return (
     <>
