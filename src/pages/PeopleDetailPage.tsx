@@ -65,7 +65,12 @@ const PeopleDetailPage = () => {
               <p>Mass: {detail.mass}</p>
               <p>Skin Color: {detail.skin_color}</p>
               <h4>Homeworld </h4>
-              <p>{detail.homeworld.name}</p>
+              <p
+                className="custom-link"
+                onClick={() => navigate(`/planets/${detail.homeworld.id}`)}
+              >
+                <strong>{detail.homeworld.name}</strong>
+              </p>
 
               <h4>Films </h4>
               {detail.films.map((film: ArrayFilm) => (
@@ -77,13 +82,6 @@ const PeopleDetailPage = () => {
                   <strong>{film.title}</strong>
                 </p>
               ))}
-
-              {/* <div className="card-title">
-                  <h4>Affiliations: </h4>
-                  {detail.affiliations.map((affiliation: string, index: number) => (
-                    <p key={index}>{affiliation}</p>
-                  ))}
-                </div> */}
             </div>
           </div>
         </Container>

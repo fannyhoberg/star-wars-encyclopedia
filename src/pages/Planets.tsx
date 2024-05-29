@@ -104,6 +104,7 @@ const Planets = () => {
                     <div className="card-body">
                       <h3 className="card-title">{res.name}</h3>
                       <p>Terrain: {res.terrain}</p>
+                      <p>Film count: {res.films_count}</p>
 
                       <p>Resident count: {res.residents_count}</p>
                     </div>

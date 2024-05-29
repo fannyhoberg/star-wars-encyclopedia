@@ -110,6 +110,8 @@ export interface PlanetDetail {
   edited: string;
   residents_count: number;
   films_count: number;
+  residents: PeopleDetail[];
+  films: FilmDetail[];
 }
 
 // export interface Resource {
