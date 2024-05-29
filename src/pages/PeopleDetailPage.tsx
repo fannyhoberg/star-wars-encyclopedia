@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 
-import { useParams } from "react-router-dom";
-import { PeopleDetail } from "../Types/StarWarsAPI.types";
-import PeopleDetails from "../components/PeopleDetails";
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrayFilm, PeopleDetail } from "../Types/StarWarsAPI.types";
+import { Button, Container } from "react-bootstrap";
 
 const PeopleDetailPage = () => {
   const { id } = useParams<{ id: string }>();
   const [detail, setDetail] = useState<PeopleDetail | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPersonDetails = async () => {
@@ -38,10 +40,54 @@ const PeopleDetailPage = () => {
 
       {error && <div>{error}</div>}
 
-      {/* {detail && <Details detail={detail}></Details>} */}
-      {detail && <PeopleDetails detail={detail}></PeopleDetails>}
+      {detail && (
+        <Container>
+          <div>
+            <Button className="primary-button" onClick={() => navigate(-1)}>
+              Back to previous
+            </Button>
+          </div>
 
-      <div>PeopleDetailPage</div>
+          <div className="card h-50 custom-card-size">
+            <div className="custom-img-size">
+              <img
+                src={detail.image_url}
+                className="card-img-top"
+                alt={detail.name}
+              />
+            </div>
+            <div className="card-body">
+              <h2 className="card-title">{detail.name}</h2>
+              <p>Birth Year: {detail.birth_year}</p>
+              <p>Eye Color: {detail.eye_color}</p>
+              <p>Hair Color: {detail.hair_color}</p>
+              <p>Height: {detail.height}</p>
+              <p>Mass: {detail.mass}</p>
+              <p>Skin Color: {detail.skin_color}</p>
+              <h4>Homeworld </h4>
+              <p>{detail.homeworld.name}</p>
+
+              <h4>Films </h4>
+              {detail.films.map((film: ArrayFilm) => (
+                <p
+                  key={film.id}
+                  className="custom-link"
+                  onClick={() => navigate(`/films/${film.id}`)}
+                >
+                  <strong>{film.title}</strong>
+                </p>
+              ))}
+
+              {/* <div className="card-title">
+                  <h4>Affiliations: </h4>
+                  {detail.affiliations.map((affiliation: string, index: number) => (
+                    <p key={index}>{affiliation}</p>
+                  ))}
+                </div> */}
+            </div>
+          </div>
+        </Container>
+      )}
     </>
   );
 };

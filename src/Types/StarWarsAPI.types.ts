@@ -85,38 +85,65 @@ export interface PeopleResult {
   last_page_url: string;
 }
 
-export interface Resource {
-  id: string;
-  name: string;
-  image_url?: string;
-  type: "films" | "people" | "planets" | "species" | "starships" | "vehicles";
+export interface PlanetResult {
+  data: PlanetDetail[];
+  current_page: number;
+  total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+}
 
-  // Films
-  title: string;
-  episode_id: string;
-  opening_crawl: string;
-  director: string;
-  producer: string;
-  release_date: string;
+export interface PlanetDetail {
+  id: number;
+  name: string;
+  rotation_period: string;
+  orbital_period: string;
+  diameter: string;
+  climate: string;
+  gravity: string;
+  terrain: string;
+  surface_water: string;
+  population: string;
   created: string;
   edited: string;
-  characters: ArrayData[];
-  planets: ArrayData[];
-  starships: ArrayData[];
-  vehicles: ArrayData[];
-  species: ArrayData[];
-
-  // People
-  birth_year: string;
-  eye_color: string;
-  hair_color: string;
-  height: string;
-  mass: string;
-  skin_color: string;
-  wiki_link: string;
-  affiliations: string[];
-  homeworld: ArrayData;
-  films: ArrayFilm[];
-
-  // Lägg till fler gemensamma attribut här
+  residents_count: number;
+  films_count: number;
 }
+
+// export interface Resource {
+//   id: string;
+//   name: string;
+//   image_url?: string;
+//   type: "films" | "people" | "planets" | "species" | "starships" | "vehicles";
+
+//   // Films
+//   title: string;
+//   episode_id: string;
+//   opening_crawl: string;
+//   director: string;
+//   producer: string;
+//   release_date: string;
+//   created: string;
+//   edited: string;
+//   characters: ArrayData[];
+//   planets: ArrayData[];
+//   starships: ArrayData[];
+//   vehicles: ArrayData[];
+//   species: ArrayData[];
+
+//   // People
+//   birth_year: string;
+//   eye_color: string;
+//   hair_color: string;
+//   height: string;
+//   mass: string;
+//   skin_color: string;
+//   wiki_link: string;
+//   affiliations: string[];
+//   homeworld: ArrayData;
+//   films: ArrayFilm[];
+
+//   // Lägg till fler gemensamma attribut här
+// }
