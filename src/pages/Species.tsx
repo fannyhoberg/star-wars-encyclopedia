@@ -81,7 +81,30 @@ const Species = () => {
         </Container>
       )}
 
-      {error && <p>{error}</p>}
+      {error && (
+        <Container
+          fluid
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "50vh" }}
+        >
+          <Row>
+            <Col className="text-center">
+              <h1>{error}</h1>
+
+              <iframe
+                src="https://giphy.com/embed/3ohuPel436qciQZ8fC"
+                width="480"
+                height="204"
+                allowFullScreen
+                title="Error GIF"
+              ></iframe>
+              <p>
+                <a href="https://giphy.com/gifs/starwars-star-wars-done-3ohuPel436qciQZ8fC"></a>
+              </p>
+            </Col>
+          </Row>
+        </Container>
+      )}
 
       {result !== null && (
         <div>
