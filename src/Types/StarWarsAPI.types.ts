@@ -114,6 +114,34 @@ export interface PlanetDetail {
   films: FilmDetail[];
 }
 
+export interface SpeciesResult {
+  data: SpeciesDetail[];
+  current_page: number;
+  total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+}
+
+export interface SpeciesDetail {
+  id: number;
+  name: string;
+  classification: string;
+  designation: string;
+  average_height: string;
+  average_lifespan: string;
+  eye_colors: string;
+  hair_colors: string;
+  skin_colors: string;
+  language: string;
+  created: string;
+  edited: string;
+  people_count: number;
+  films_count: number;
+  homeworld: ArrayData;
+}
+
 // export interface Resource {
 //   id: string;
 //   name: string;

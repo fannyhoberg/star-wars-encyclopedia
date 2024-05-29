@@ -6,6 +6,8 @@ import {
   PeopleResult,
   PlanetResult,
   PlanetDetail,
+  SpeciesDetail,
+  SpeciesResult,
 } from "../Types/StarWarsAPI.types";
 
 // Films
@@ -49,6 +51,21 @@ export const getPlanets = async (page: number) => {
 export const getPlanet = async (id: number) => {
   const res = await axios.get<PlanetDetail>(
     `https://swapi.thehiveresistance.com/api/planets/${id}`
+  );
+  return res.data;
+};
+
+// Species
+export const getAllSpecies = async (page: number) => {
+  const res = await axios.get<SpeciesResult>(
+    `https://swapi.thehiveresistance.com/api/species/?page=${page}`
+  );
+  return res.data;
+};
+
+export const getSpecies = async (id: number) => {
+  const res = await axios.get<SpeciesDetail>(
+    `https://swapi.thehiveresistance.com/api/species/${id}`
   );
   return res.data;
 };

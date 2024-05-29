@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { PlanetResult } from "../Types/StarWarsAPI.types";
+import { SpeciesResult } from "../Types/StarWarsAPI.types";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Pagination from "../components/Pagination";
 
-const Planets = () => {
-  const [result, setResult] = useState<PlanetResult | null>(null);
+const Species = () => {
+  const [result, setResult] = useState<SpeciesResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -22,7 +22,7 @@ const Planets = () => {
     setError(null);
 
     try {
-      const data = await StarWarsAPI.getPlanets(page);
+      const data = await StarWarsAPI.getAllSpecies(page);
       await new Promise((r) => setTimeout(r, 1000));
 
       console.log("data", data);
@@ -55,6 +55,7 @@ const Planets = () => {
     setPage(currentPage);
     people(currentPage);
   }, [currentPage]);
+
   return (
     <>
       {isLoading && (
@@ -85,7 +86,7 @@ const Planets = () => {
       {result !== null && (
         <div>
           <Container fluid className="custom-container">
-            <p>Showing {result.total} planets</p>
+            <p>Showing {result.total} species</p>
 
             <Row className="g-3">
               {result.data.map((res) => (
@@ -100,15 +101,15 @@ const Planets = () => {
                   <div className="card h-100 custom-card-no-image">
                     <div className="card-body">
                       <h3 className="card-title">{res.name}</h3>
-                      <p>Terrain: {res.terrain}</p>
+                      <p>Classification: {res.classification}</p>
                       <p>Film count: {res.films_count}</p>
-
-                      <p>Resident count: {res.residents_count}</p>
+                      <p>People count: {res.people_count}</p>
+                      {/* <p>Home world: {res.homeworld.name}</p> */}
                     </div>
                     <div className="d-flex justify-content-center mb-3">
                       <Button
                         className="custom-button"
-                        onClick={() => navigate(`/planets/${res.id}`)}
+                        onClick={() => navigate(`/species/${res.id}`)}
                       >
                         Read more
                       </Button>
@@ -133,4 +134,4 @@ const Planets = () => {
   );
 };
 
-export default Planets;
+export default Species;
