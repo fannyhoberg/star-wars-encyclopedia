@@ -104,7 +104,9 @@ const Species = () => {
                       <p>Classification: {res.classification}</p>
                       <p>Film count: {res.films_count}</p>
                       <p>People count: {res.people_count}</p>
-                      {/* <p>Home world: {res.homeworld.name}</p> */}
+                      {res.homeworld !== null && (
+                        <p>Home world: {res.homeworld.name}</p>
+                      )}
                     </div>
                     <div className="d-flex justify-content-center mb-3">
                       <Button

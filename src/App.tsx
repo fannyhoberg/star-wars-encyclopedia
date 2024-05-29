@@ -11,6 +11,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import Planets from "./pages/Planets";
 import PlanetDetailPage from "./pages/PlanetDetailPage";
 import Species from "./pages/Species";
+import SpeciesDetailPage from "./pages/SpeciesDetailPage";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/films/:id" element={<FilmDetailPage />} />
           <Route path="/people/:id" element={<PeopleDetailPage />} />
           <Route path="/planets/:id" element={<PlanetDetailPage />} />
-          <Route path="/species/:id" element={<PlanetDetailPage />} />
+          <Route path="/species/:id" element={<SpeciesDetailPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

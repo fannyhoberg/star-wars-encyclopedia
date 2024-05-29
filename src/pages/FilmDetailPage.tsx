@@ -81,10 +81,24 @@ const FilmDetailPage = () => {
                 <h4>Planets: </h4>
                 {detail.planets.map((plan) => (
                   <p
+                    key={plan.id}
                     className="custom-link"
                     onClick={() => navigate(`/planets/${plan.id}`)}
                   >
                     <strong>{plan.name}</strong>
+                  </p>
+                ))}
+              </div>
+
+              <div className="card-title">
+                <h4>Species: </h4>
+                {detail.species.map((spec) => (
+                  <p
+                    key={spec.id}
+                    className="custom-link"
+                    onClick={() => navigate(`/species/${spec.id}`)}
+                  >
+                    <strong>{spec.name}</strong>
                   </p>
                 ))}
               </div>
@@ -95,12 +109,8 @@ const FilmDetailPage = () => {
                       <p>{star.name}</p>
                     ))}
                   </div>
-                  <div className="card-title">
-                    <h4>Species: </h4>
-                    {detail.species.map((spec) => (
-                      <p>{spec.name}</p>
-                    ))}
-                  </div>
+
+                  
                   <div className="card-title">
                     <h4>Vehicles: </h4>
                     {detail.vehicles.map((vehicle) => (

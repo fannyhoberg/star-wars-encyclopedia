@@ -139,7 +139,9 @@ export interface SpeciesDetail {
   edited: string;
   people_count: number;
   films_count: number;
+  people: ArrayData[];
   homeworld: ArrayData;
+  films: ArrayFilm[];
 }
 
 // export interface Resource {

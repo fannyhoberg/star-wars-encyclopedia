@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrayFilm, PeopleDetail } from "../Types/StarWarsAPI.types";
+import { ArrayData, ArrayFilm, PeopleDetail } from "../Types/StarWarsAPI.types";
 import { Button, Container } from "react-bootstrap";
 
 const PeopleDetailPage = () => {
@@ -82,6 +82,21 @@ const PeopleDetailPage = () => {
                   <strong>{film.title}</strong>
                 </p>
               ))}
+              <h4>Species: </h4>
+
+              {detail.species.length > 0 ? (
+                detail.species.map((res: ArrayData) => (
+                  <p
+                    key={res.id}
+                    className="custom-link"
+                    onClick={() => navigate(`/people/${res.id}`)}
+                  >
+                    <strong>{res.name}</strong>
+                  </p>
+                ))
+              ) : (
+                <p>Human?</p>
+              )}
             </div>
           </div>
         </Container>
