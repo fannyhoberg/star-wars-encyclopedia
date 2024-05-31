@@ -176,3 +176,34 @@ export interface StarshipsDetails {
   pilots: ArrayData[];
   films: ArrayFilm[];
 }
+
+export interface VehiclesResult {
+  data: VehicleDetails[];
+  current_page: number;
+  total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+}
+
+export interface VehicleDetails {
+  id: number;
+  name: string;
+  model: string;
+  vehicle_class: string;
+  manufacturer: string;
+  length: string;
+  cost_in_credits: string;
+  crew: string;
+  passengers: string;
+  max_atmosphering_speed: string;
+  cargo_capacity: string;
+  consumables: string;
+  created: string;
+  edited: string;
+  pilots_count: number;
+  films_count: number;
+  pilots: ArrayData[];
+  films: ArrayFilm[];
+}
