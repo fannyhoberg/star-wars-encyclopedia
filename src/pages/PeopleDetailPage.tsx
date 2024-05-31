@@ -112,6 +112,21 @@ const PeopleDetailPage = () => {
               ) : (
                 <p>0</p>
               )}
+
+              <h4>Vehicles: </h4>
+              {detail.vehicles.length > 0 ? (
+                detail.vehicles.map((res) => (
+                  <p
+                    key={res.id}
+                    className="custom-link"
+                    onClick={() => navigate(`/vehicles/${res.id}`)}
+                  >
+                    <strong>{res.name}</strong>
+                  </p>
+                ))
+              ) : (
+                <p>0</p>
+              )}
             </div>
           </div>
         </Container>
