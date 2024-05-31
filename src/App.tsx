@@ -13,6 +13,7 @@ import PlanetDetailPage from "./pages/PlanetDetailPage";
 import Species from "./pages/Species";
 import SpeciesDetailPage from "./pages/SpeciesDetailPage";
 import Starships from "./pages/Starships";
+import StarshipsDetailPage from "./pages/StarshipsDetailPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/people/:id" element={<PeopleDetailPage />} />
           <Route path="/planets/:id" element={<PlanetDetailPage />} />
           <Route path="/species/:id" element={<SpeciesDetailPage />} />
+          <Route path="/starships/:id" element={<StarshipsDetailPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

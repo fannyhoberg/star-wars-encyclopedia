@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as StarWarsAPI from "../services/StarWarsAPI";
 import { Button, Col, Container, Row } from "react-bootstrap";
@@ -24,8 +24,6 @@ const Starships = () => {
     try {
       const data = await StarWarsAPI.getStarships(page);
       await new Promise((r) => setTimeout(r, 1000));
-
-      console.log("data", data);
 
       setResult(data);
     } catch (err) {

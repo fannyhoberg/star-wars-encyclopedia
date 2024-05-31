@@ -173,4 +173,6 @@ export interface StarshipsDetails {
   edited: string;
   pilots_count: number;
   films_count: number;
+  pilots: ArrayData[];
+  films: ArrayFilm[];
 }
