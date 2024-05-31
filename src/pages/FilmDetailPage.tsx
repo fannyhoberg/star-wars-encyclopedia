@@ -55,18 +55,20 @@ const FilmDetailPage = () => {
                 alt={detail.title}
               />
             </div>
-            <div className="card-body">
-              <h2 className="card-title">{detail.title}</h2>
-              <p>Episode: {detail.episode_id}</p>
+            <div className="card-body ">
+              <div className="card-title custom-space-between">
+                <h2>{detail.title}</h2>
+                <p>Episode: {detail.episode_id}</p>
 
-              <p>Director: {detail.director}</p>
-              <p>Producer: {detail.producer}</p>
-              <p>Release date: {detail.release_date}</p>
-              <p>
-                <i>{detail.opening_crawl}</i>
-              </p>
-              <div className="card-title">
-                <h4>Characters: </h4>
+                <p>Director: {detail.director}</p>
+                <p>Producer: {detail.producer}</p>
+                <p>Release date: {detail.release_date}</p>
+                <p>
+                  <i>{detail.opening_crawl}</i>
+                </p>
+              </div>
+              <div className="card-title custom-space-between">
+                <h3>Characters: </h3>
                 {detail.characters.map((char: ArrayData) => (
                   <p
                     key={char.id}
@@ -77,8 +79,8 @@ const FilmDetailPage = () => {
                   </p>
                 ))}
               </div>
-              <div className="card-title">
-                <h4>Planets: </h4>
+              <div className="card-title custom-space-between">
+                <h3>Planets: </h3>
                 {detail.planets.map((plan) => (
                   <p
                     key={plan.id}
@@ -90,8 +92,8 @@ const FilmDetailPage = () => {
                 ))}
               </div>
 
-              <div className="card-title">
-                <h4>Species: </h4>
+              <div className="card-title custom-space-between">
+                <h3>Species: </h3>
                 {detail.species.map((spec) => (
                   <p
                     key={spec.id}
@@ -103,8 +105,8 @@ const FilmDetailPage = () => {
                 ))}
               </div>
 
-              <div className="card-title">
-                <h4>Starships: </h4>
+              <div className="card-title custom-space-between">
+                <h3>Starships: </h3>
                 {detail.starships.length > 0 ? (
                   detail.starships.map((star) => (
                     <p
@@ -120,8 +122,8 @@ const FilmDetailPage = () => {
                 )}
               </div>
 
-              <div className="card-title">
-                <h4>Vehicles: </h4>
+              <div className="card-title custom-space-between">
+                <h3>Vehicles: </h3>
                 {detail.vehicles.length > 0 ? (
                   detail.vehicles.map((res) => (
                     <p

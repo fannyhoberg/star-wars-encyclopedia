@@ -53,42 +53,47 @@ const PlanetDetailPage = () => {
           </div>
 
           <div className="card h-50 custom-card-size-no-image">
-            <div className="card-body custom-card-size-no-image">
-              <h2 className="card-title">{detail.name}</h2>
-              <p>Birth Year: {detail.rotation_period}</p>
-              <p>Eye Color: {detail.orbital_period}</p>
-              <p>Hair Color: {detail.diameter}</p>
-              <p>Height: {detail.climate}</p>
-              <p>Mass: {detail.gravity}</p>
-              <p>Skin Color: {detail.terrain}</p>
-              <p>Surface water: {detail.surface_water}</p>
-              <p>Population: {detail.population}</p>
+            <div className="card-body">
+              <div className="card-title custom-space-between">
+                <h2>{detail.name}</h2>
+                <p>Birth Year: {detail.rotation_period}</p>
+                <p>Eye Color: {detail.orbital_period}</p>
+                <p>Hair Color: {detail.diameter}</p>
+                <p>Height: {detail.climate}</p>
+                <p>Mass: {detail.gravity}</p>
+                <p>Skin Color: {detail.terrain}</p>
+                <p>Surface water: {detail.surface_water}</p>
+                <p>Population: {detail.population}</p>
+              </div>
 
-              <h4>Residents</h4>
-              {detail.residents.length > 0 ? (
-                detail.residents.map((res: PeopleDetail) => (
+              <div className="card-title custom-space-between">
+                <h3>Residents</h3>
+                {detail.residents.length > 0 ? (
+                  detail.residents.map((res: PeopleDetail) => (
+                    <p
+                      key={res.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/people/${res.id}`)}
+                    >
+                      <strong>{res.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
+              <div className="card-title custom-space-between">
+                <h3>Films </h3>
+                {detail.films.map((film: FilmDetail) => (
                   <p
-                    key={res.id}
+                    key={film.id}
                     className="custom-link"
-                    onClick={() => navigate(`/people/${res.id}`)}
+                    onClick={() => navigate(`/films/${film.id}`)}
                   >
-                    <strong>{res.name}</strong>
+                    <strong>{film.title}</strong>
                   </p>
-                ))
-              ) : (
-                <p>0</p>
-              )}
-              <h4>Films </h4>
-
-              {detail.films.map((film: FilmDetail) => (
-                <p
-                  key={film.id}
-                  className="custom-link"
-                  onClick={() => navigate(`/films/${film.id}`)}
-                >
-                  <strong>{film.title}</strong>
-                </p>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Container>

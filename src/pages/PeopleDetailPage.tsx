@@ -56,77 +56,92 @@ const PeopleDetailPage = () => {
                 alt={detail.name}
               />
             </div>
+
             <div className="card-body">
-              <h2 className="card-title">{detail.name}</h2>
-              <p>Birth Year: {detail.birth_year}</p>
-              <p>Eye Color: {detail.eye_color}</p>
-              <p>Hair Color: {detail.hair_color}</p>
-              <p>Height: {detail.height}</p>
-              <p>Mass: {detail.mass}</p>
-              <p>Skin Color: {detail.skin_color}</p>
-              <h4>Homeworld </h4>
-              <p
-                className="custom-link"
-                onClick={() => navigate(`/planets/${detail.homeworld.id}`)}
-              >
-                <strong>{detail.homeworld.name}</strong>
-              </p>
+              <div className="card-title custom-space-between">
+                <h2>{detail.name}</h2>
+                <p>Birth Year: {detail.birth_year}</p>
+                <p>Eye Color: {detail.eye_color}</p>
+                <p>Hair Color: {detail.hair_color}</p>
+                <p>Height: {detail.height}</p>
+                <p>Mass: {detail.mass}</p>
+                <p>Skin Color: {detail.skin_color}</p>
+              </div>
 
-              <h4>Films </h4>
-              {detail.films.map((film: ArrayFilm) => (
+              <div className="card-title custom-space-between">
+                <h3>Homeworld </h3>
                 <p
-                  key={film.id}
                   className="custom-link"
-                  onClick={() => navigate(`/films/${film.id}`)}
+                  onClick={() => navigate(`/planets/${detail.homeworld.id}`)}
                 >
-                  <strong>{film.title}</strong>
+                  <strong>{detail.homeworld.name}</strong>
                 </p>
-              ))}
-              <h4>Species: </h4>
+              </div>
 
-              {detail.species.length > 0 ? (
-                detail.species.map((res: ArrayData) => (
+              <div className="card-title custom-space-between">
+                <h3>Films </h3>
+                {detail.films.map((film: ArrayFilm) => (
                   <p
-                    key={res.id}
+                    key={film.id}
                     className="custom-link"
-                    onClick={() => navigate(`/people/${res.id}`)}
+                    onClick={() => navigate(`/films/${film.id}`)}
                   >
-                    <strong>{res.name}</strong>
+                    <strong>{film.title}</strong>
                   </p>
-                ))
-              ) : (
-                <p>Human?</p>
-              )}
+                ))}
+              </div>
 
-              <h4>Starships: </h4>
-              {detail.starships.length > 0 ? (
-                detail.starships.map((star) => (
-                  <p
-                    key={star.id}
-                    className="custom-link"
-                    onClick={() => navigate(`/starships/${star.id}`)}
-                  >
-                    <strong>{star.name}</strong>
-                  </p>
-                ))
-              ) : (
-                <p>0</p>
-              )}
+              <div className="card-title custom-space-between">
+                <h3>Species: </h3>
 
-              <h4>Vehicles: </h4>
-              {detail.vehicles.length > 0 ? (
-                detail.vehicles.map((res) => (
-                  <p
-                    key={res.id}
-                    className="custom-link"
-                    onClick={() => navigate(`/vehicles/${res.id}`)}
-                  >
-                    <strong>{res.name}</strong>
-                  </p>
-                ))
-              ) : (
-                <p>0</p>
-              )}
+                {detail.species.length > 0 ? (
+                  detail.species.map((res: ArrayData) => (
+                    <p
+                      key={res.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/people/${res.id}`)}
+                    >
+                      <strong>{res.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>Human?</p>
+                )}
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h3>Starships: </h3>
+                {detail.starships.length > 0 ? (
+                  detail.starships.map((star) => (
+                    <p
+                      key={star.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/starships/${star.id}`)}
+                    >
+                      <strong>{star.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h3>Vehicles: </h3>
+                {detail.vehicles.length > 0 ? (
+                  detail.vehicles.map((res) => (
+                    <p
+                      key={res.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/vehicles/${res.id}`)}
+                    >
+                      <strong>{res.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
             </div>
           </div>
         </Container>

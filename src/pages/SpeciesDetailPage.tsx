@@ -53,54 +53,64 @@ const SpeciesDetailPage = () => {
           </div>
 
           <div className="card h-50 custom-card-size-no-image">
-            <div className="card-body custom-card-size-no-image">
-              <h2 className="card-title">{detail.name}</h2>
-              <p>Classification: {detail.classification}</p>
-              <p>Designation: {detail.designation}</p>
-              <p>Average height: {detail.average_height}</p>
-              <p>Average lifespan: {detail.average_lifespan}</p>
-              <p>Eye colors: {detail.eye_colors}</p>
-              <p>Hair color: {detail.hair_colors}</p>
-              <p>Skin colors: {detail.skin_colors}</p>
-              <p>Language: {detail.language}</p>
-              {detail.homeworld !== null && (
-                <>
-                  <h4>Homeworld </h4>
+            <div className="card-body">
+              <div className="card-title custom-space-between">
+                <h2 className="card-title">{detail.name}</h2>
+                <p>Classification: {detail.classification}</p>
+                <p>Designation: {detail.designation}</p>
+                <p>Average height: {detail.average_height}</p>
+                <p>Average lifespan: {detail.average_lifespan}</p>
+                <p>Eye colors: {detail.eye_colors}</p>
+                <p>Hair color: {detail.hair_colors}</p>
+                <p>Skin colors: {detail.skin_colors}</p>
+                <p>Language: {detail.language}</p>
+              </div>
+
+              <div className="card-title custom-space-between">
+                {detail.homeworld !== null && (
+                  <>
+                    <h4>Homeworld </h4>
+                    <p
+                      className="custom-link"
+                      onClick={() =>
+                        navigate(`/planets/${detail.homeworld.id}`)
+                      }
+                    >
+                      <strong>{detail.homeworld.name}</strong>
+                    </p>
+                  </>
+                )}
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h4>People</h4>
+                {detail.people.length > 0 ? (
+                  detail.people.map((res: ArrayData) => (
+                    <p
+                      key={res.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/people/${res.id}`)}
+                    >
+                      <strong>{res.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h4>Films </h4>
+                {detail.films.map((film: ArrayFilm) => (
                   <p
+                    key={film.id}
                     className="custom-link"
-                    onClick={() => navigate(`/planets/${detail.homeworld.id}`)}
+                    onClick={() => navigate(`/films/${film.id}`)}
                   >
-                    <strong>{detail.homeworld.name}</strong>
+                    <strong>{film.title}</strong>
                   </p>
-                </>
-              )}
-
-              <h4>People</h4>
-              {detail.people.length > 0 ? (
-                detail.people.map((res: ArrayData) => (
-                  <p
-                    key={res.id}
-                    className="custom-link"
-                    onClick={() => navigate(`/people/${res.id}`)}
-                  >
-                    <strong>{res.name}</strong>
-                  </p>
-                ))
-              ) : (
-                <p>0</p>
-              )}
-
-              <h4>Films </h4>
-
-              {detail.films.map((film: ArrayFilm) => (
-                <p
-                  key={film.id}
-                  className="custom-link"
-                  onClick={() => navigate(`/films/${film.id}`)}
-                >
-                  <strong>{film.title}</strong>
-                </p>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Container>

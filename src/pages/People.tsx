@@ -4,6 +4,8 @@ import * as StarWarsAPI from "../services/StarWarsAPI";
 import { PeopleResult } from "../Types/StarWarsAPI.types";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Pagination from "../components/Pagination";
+import LoadingGIF from "../components/LoadingGIF";
+import ErrorGIF from "../components/ErrorGIF";
 
 const People = () => {
   const [result, setResult] = useState<PeopleResult | null>(null);
@@ -61,52 +63,13 @@ const People = () => {
 
   return (
     <>
-      {isLoading && (
-        <Container
-          fluid
-          className="d-flex justify-content-center align-items-center"
-          style={{ minHeight: "50vh" }}
-        >
-          <Row>
-            <Col className="text-center">
-              <iframe
-                src="https://giphy.com/embed/3ornka9rAaKRA2Rkac"
-                width="480"
-                height="204"
-                allowFullScreen
-                title="Loading GIF"
-              ></iframe>
-              <p>
-                <a href="https://giphy.com/gifs/starwars-movie-star-wars-3ornka9rAaKRA2Rkac"></a>
-              </p>
-            </Col>
-          </Row>
-        </Container>
-      )}
+      {isLoading && <LoadingGIF />}
 
       {error && (
-        <Container
-          fluid
-          className="d-flex justify-content-center align-items-center"
-          style={{ minHeight: "50vh" }}
-        >
-          <Row>
-            <Col className="text-center">
-              <h1>{error}</h1>
-
-              <iframe
-                src="https://giphy.com/embed/3ohuPel436qciQZ8fC"
-                width="480"
-                height="204"
-                allowFullScreen
-                title="Error GIF"
-              ></iframe>
-              <p>
-                <a href="https://giphy.com/gifs/starwars-star-wars-done-3ohuPel436qciQZ8fC"></a>
-              </p>
-            </Col>
-          </Row>
-        </Container>
+        <>
+          <h1>{error}</h1>
+          <ErrorGIF />
+        </>
       )}
 
       {result !== null && (
@@ -125,7 +88,7 @@ const People = () => {
                   className="d-flex"
                 >
                   <div className="card h-100 custom-card">
-                    <div className="custom-img-size">
+                    <div className="img">
                       <img
                         src={res.image_url}
                         className="card-img-top"

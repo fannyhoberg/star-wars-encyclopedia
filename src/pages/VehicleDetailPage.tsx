@@ -55,44 +55,50 @@ const VehicleDetailPage = () => {
           </div>
 
           <div className="card h-50 custom-card-size-no-image">
-            <div className="card-body custom-card-size-no-image">
-              <h2 className="card-title">{detail.name}</h2>
-              <p>Model: {detail.model}</p>
-              <p>Vehicle class: {detail.vehicle_class}</p>
-              <p>Manufacturer: {detail.manufacturer}</p>
-              <p>Length: {detail.length}</p>
-              <p>Cost in credits: {detail.cost_in_credits}</p>
-              <p>Crew: {detail.crew}</p>
-              <p>Passengers: {detail.passengers}</p>
-              <p>Max atmosphere speed: {detail.max_atmosphering_speed}</p>
-              <p>Cargo capacity: {detail.cargo_capacity}</p>
-              <p>Consumables: {detail.consumables}</p>
-              <h4>Pilots </h4>
-              {detail.pilots.length > 0 ? (
-                detail.pilots.map((res: ArrayData) => (
+            <div className="card-body">
+              <div className="card-title custom-space-between">
+                <h2>{detail.name}</h2>
+                <p>Model: {detail.model}</p>
+                <p>Vehicle class: {detail.vehicle_class}</p>
+                <p>Manufacturer: {detail.manufacturer}</p>
+                <p>Length: {detail.length}</p>
+                <p>Cost in credits: {detail.cost_in_credits}</p>
+                <p>Crew: {detail.crew}</p>
+                <p>Passengers: {detail.passengers}</p>
+                <p>Max atmosphere speed: {detail.max_atmosphering_speed}</p>
+                <p>Cargo capacity: {detail.cargo_capacity}</p>
+                <p>Consumables: {detail.consumables}</p>
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h3>Pilots </h3>
+                {detail.pilots.length > 0 ? (
+                  detail.pilots.map((res: ArrayData) => (
+                    <p
+                      key={res.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/people/${res.id}`)}
+                    >
+                      <strong>{res.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
+
+              <div className="card-title custom-space-between">
+                <h3>Films </h3>
+                {detail.films.map((film: ArrayFilm) => (
                   <p
-                    key={res.id}
+                    key={film.id}
                     className="custom-link"
-                    onClick={() => navigate(`/people/${res.id}`)}
+                    onClick={() => navigate(`/films/${film.id}`)}
                   >
-                    <strong>{res.name}</strong>
+                    <strong>{film.title}</strong>
                   </p>
-                ))
-              ) : (
-                <p>0</p>
-              )}
-
-              <h4>Films </h4>
-
-              {detail.films.map((film: ArrayFilm) => (
-                <p
-                  key={film.id}
-                  className="custom-link"
-                  onClick={() => navigate(`/films/${film.id}`)}
-                >
-                  <strong>{film.title}</strong>
-                </p>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </Container>

@@ -14,8 +14,8 @@ import Species from "./pages/Species";
 import SpeciesDetailPage from "./pages/SpeciesDetailPage";
 import Starships from "./pages/Starships";
 import StarshipsDetailPage from "./pages/StarshipsDetailPage";
-import VehiclesPage from "./pages/VehiclesPage";
 import VehicleDetailPage from "./pages/VehicleDetailPage";
+import Vehicles from "./pages/Vehicles";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route path="/planets" element={<Planets />}></Route>
           <Route path="/species" element={<Species />}></Route>
           <Route path="/starships" element={<Starships />}></Route>
-          <Route path="/vehicles" element={<VehiclesPage />}></Route>
+          <Route path="/vehicles" element={<Vehicles />}></Route>
 
           <Route path="/films/:id" element={<FilmDetailPage />} />
           <Route path="/people/:id" element={<PeopleDetailPage />} />

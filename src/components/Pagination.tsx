@@ -32,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
       <div className="page">
         Page {page}
-        {totalPages && <>/{totalPages}</>}
+        {totalPages && <> of {totalPages}</>}
       </div>
 
       <div className="next">
