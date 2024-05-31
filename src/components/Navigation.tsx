@@ -2,13 +2,19 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/images/star-wars-seeklogo.svg";
 
 const Navigation = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          Star Wars Wiki
+          <img
+            src={logo}
+            alt="Star Wars logo"
+            height="30"
+            className="d-inline-block align-top"
+          />{" "}
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

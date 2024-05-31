@@ -8,6 +8,7 @@
 .custom-card-size {
   width: 70%;
   margin: auto;
+  margin-top: 20px;
 }
 
 .custom-card-size-no-image {
@@ -52,20 +53,48 @@
   border-radius: 2rem;
   font-size: 1rem;
   cursor: pointer;
-  background-color: #ff5722;
+  background-color: grey;
   color: #fff;
-  border-color: #ff5722;
+  border-color: darkgray;
 
   &:hover {
-    background-color: brown;
+    background-color: #ff5722;
+  }
+}
+
+.custom-button-homepage {
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: grey;
+  font-size: large;
+  color: #fff;
+  border-color: darkgray;
+  margin: 1rem;
+
+  &:hover {
+    background-color: #ff5722;
   }
 }
 
 .custom-link {
-  color: #ff5722;
+  color: dimgrey;
   cursor: pointer;
 
   &:hover {
-    color: brown;
+    color: #ff5722;
+  }
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+  .button-container {
+    flex-direction: column;
   }
 }

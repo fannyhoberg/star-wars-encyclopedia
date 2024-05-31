@@ -14,8 +14,12 @@ import {
   VehicleDetails,
 } from "../Types/StarWarsAPI.types";
 
+const FAKE_DELAY = 1200;
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 // Films
 export const getFilms = async (page: number) => {
+  await delay(FAKE_DELAY);
   const res = await axios.get<FilmResult>(
     `https://swapi.thehiveresistance.com/api/films?page=${page}`
   );
@@ -31,6 +35,8 @@ export const getFilm = async (id: number) => {
 
 // People
 export const getPeople = async (page: number) => {
+  await delay(FAKE_DELAY);
+
   const res = await axios.get<PeopleResult>(
     `https://swapi.thehiveresistance.com/api/people?page=${page}`
   );
@@ -46,6 +52,8 @@ export const getPerson = async (id: number) => {
 
 // Planets
 export const getPlanets = async (page: number) => {
+  await delay(FAKE_DELAY);
+
   const res = await axios.get<PlanetResult>(
     `https://swapi.thehiveresistance.com/api/planets/?page=${page}`
   );
@@ -61,6 +69,8 @@ export const getPlanet = async (id: number) => {
 
 // Species
 export const getAllSpecies = async (page: number) => {
+  await delay(FAKE_DELAY);
+
   const res = await axios.get<SpeciesResult>(
     `https://swapi.thehiveresistance.com/api/species/?page=${page}`
   );
@@ -76,6 +86,8 @@ export const getSpecies = async (id: number) => {
 
 // Starships
 export const getStarships = async (page: number) => {
+  await delay(FAKE_DELAY);
+
   const res = await axios.get<StarShipsResult>(
     `https://swapi.thehiveresistance.com/api/starships/?page=${page}`
   );
@@ -91,6 +103,8 @@ export const getStarship = async (id: number) => {
 
 // Vehicles
 export const getVehicles = async (page: number) => {
+  await delay(FAKE_DELAY);
+
   const res = await axios.get<VehiclesResult>(
     `https://swapi.thehiveresistance.com/api/vehicles/?page=${page}`
   );
