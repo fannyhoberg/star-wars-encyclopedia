@@ -106,7 +106,7 @@ const Starships = () => {
 
       {result !== null && (
         <div>
-          <Container fluid className="custom-container">
+          <Container>
             <p>Showing {result.total} starships</p>
 
             <Row className="g-3">

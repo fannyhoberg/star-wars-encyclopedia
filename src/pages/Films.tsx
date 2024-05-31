@@ -108,7 +108,7 @@ const Films = () => {
 
       {result !== null && (
         <div>
-          <Container fluid className="custom-container">
+          <Container>
             <p>Showing {result.total} films</p>
 
             <Row className="g-3">
@@ -121,11 +121,11 @@ const Films = () => {
                   key={res.id}
                   className="d-flex"
                 >
-                  <div className="card h-100">
-                    <div className="card h-20">
+                  <div className="card h-100  custom-card">
+                    <div>
                       <img
                         src={res.image_url}
-                        className="card-img-top"
+                        className="card-img-top "
                         alt={res.title}
                       />
                     </div>

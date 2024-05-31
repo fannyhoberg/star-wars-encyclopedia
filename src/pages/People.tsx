@@ -111,13 +111,11 @@ const People = () => {
 
       {result !== null && (
         <div>
-          <Container fluid className="custom-container">
+          <Container>
             <p>Showing {result.total} people</p>
 
             <Row className="g-3">
               {result.data.map((res) => (
-                // <Details key={res.id} resource={res} />
-
                 <Col
                   xs={12}
                   sm={6}
@@ -127,7 +125,7 @@ const People = () => {
                   className="d-flex"
                 >
                   <div className="card h-100 custom-card">
-                    <div>
+                    <div className="custom-img-size">
                       <img
                         src={res.image_url}
                         className="card-img-top"

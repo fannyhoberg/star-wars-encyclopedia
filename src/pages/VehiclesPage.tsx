@@ -106,7 +106,7 @@ const VehiclesPage = () => {
 
       {result !== null && (
         <div>
-          <Container fluid className="custom-container">
+          <Container>
             <p>Showing {result.total} vehicles</p>
 
             <Row className="g-3">
