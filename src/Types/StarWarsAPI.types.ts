@@ -144,38 +144,33 @@ export interface SpeciesDetail {
   films: ArrayFilm[];
 }
 
-// export interface Resource {
-//   id: string;
-//   name: string;
-//   image_url?: string;
-//   type: "films" | "people" | "planets" | "species" | "starships" | "vehicles";
+export interface StarShipsResult {
+  data: StarshipsDetails[];
+  current_page: number;
+  total: number;
+  from: number;
+  last_page: number;
+  first_page_url: string;
+  last_page_url: string;
+}
 
-//   // Films
-//   title: string;
-//   episode_id: string;
-//   opening_crawl: string;
-//   director: string;
-//   producer: string;
-//   release_date: string;
-//   created: string;
-//   edited: string;
-//   characters: ArrayData[];
-//   planets: ArrayData[];
-//   starships: ArrayData[];
-//   vehicles: ArrayData[];
-//   species: ArrayData[];
-
-//   // People
-//   birth_year: string;
-//   eye_color: string;
-//   hair_color: string;
-//   height: string;
-//   mass: string;
-//   skin_color: string;
-//   wiki_link: string;
-//   affiliations: string[];
-//   homeworld: ArrayData;
-//   films: ArrayFilm[];
-
-//   // Lägg till fler gemensamma attribut här
-// }
+export interface StarshipsDetails {
+  id: number;
+  name: string;
+  model: string;
+  starship_class: string;
+  manufacturer: string;
+  cost_in_credits: string;
+  length: string;
+  crew: string;
+  passengers: string;
+  max_atmosphering_speed: string;
+  hyperdrive_rating: string;
+  MGLT: string;
+  cargo_capacity: string;
+  consumables: string;
+  created: string;
+  edited: string;
+  pilots_count: number;
+  films_count: number;
+}

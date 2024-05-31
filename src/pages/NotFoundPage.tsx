@@ -10,16 +10,16 @@ const NotFoundPage = () => {
       >
         <Row>
           <Col className="text-center">
-            <h1>Could not find what you were looking for</h1>
+            <h1>404 Not Found</h1>
 
             <iframe
-              src="https://giphy.com/embed/3h2lUwrZKilQKbAK6f"
+              src="https://giphy.com/embed/3o84sF21zQYacFcl68"
               width="480"
               height="201"
               allowFullScreen
             ></iframe>
             <p>
-              <a href="https://giphy.com/gifs/starwars-star-wars-the-last-jedi-3h2lUwrZKilQKbAK6f"></a>
+              <a href="https://giphy.com/gifs/starwars-movie-star-wars-3o84sF21zQYacFcl68"></a>
             </p>
           </Col>
         </Row>

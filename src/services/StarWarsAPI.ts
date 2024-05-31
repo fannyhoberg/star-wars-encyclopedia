@@ -8,6 +8,8 @@ import {
   PlanetDetail,
   SpeciesDetail,
   SpeciesResult,
+  StarShipsResult,
+  StarshipsDetails,
 } from "../Types/StarWarsAPI.types";
 
 // Films
@@ -66,6 +68,21 @@ export const getAllSpecies = async (page: number) => {
 export const getSpecies = async (id: number) => {
   const res = await axios.get<SpeciesDetail>(
     `https://swapi.thehiveresistance.com/api/species/${id}`
+  );
+  return res.data;
+};
+
+// Starships
+export const getStarships = async (page: number) => {
+  const res = await axios.get<StarShipsResult>(
+    `https://swapi.thehiveresistance.com/api/starships/?page=${page}`
+  );
+  return res.data;
+};
+
+export const getStarship = async (id: number) => {
+  const res = await axios.get<StarshipsDetails>(
+    `https://swapi.thehiveresistance.com/api/starships/${id}`
   );
   return res.data;
 };

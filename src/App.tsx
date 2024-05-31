@@ -12,6 +12,7 @@ import Planets from "./pages/Planets";
 import PlanetDetailPage from "./pages/PlanetDetailPage";
 import Species from "./pages/Species";
 import SpeciesDetailPage from "./pages/SpeciesDetailPage";
+import Starships from "./pages/Starships";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/people" element={<People />}></Route>
           <Route path="/planets" element={<Planets />}></Route>
           <Route path="/species" element={<Species />}></Route>
+          <Route path="/starships" element={<Starships />}></Route>
 
           <Route path="/films/:id" element={<FilmDetailPage />} />
           <Route path="/people/:id" element={<PeopleDetailPage />} />
