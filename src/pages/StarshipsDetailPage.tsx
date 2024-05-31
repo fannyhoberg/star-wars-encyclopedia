@@ -24,9 +24,6 @@ const StarshipsDetailPage = () => {
 
       try {
         const data = await StarWarsAPI.getStarship(Number(id));
-
-        console.log("data", data);
-
         setDetail(data);
       } catch (err) {
         if (err instanceof Error) {

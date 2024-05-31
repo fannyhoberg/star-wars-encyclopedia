@@ -20,7 +20,6 @@ const FilmDetailPage = () => {
 
       try {
         const data = await StarWarsAPI.getFilm(Number(id));
-
         setDetail(data);
       } catch (err) {
         if (err instanceof Error) {
@@ -67,6 +66,7 @@ const FilmDetailPage = () => {
                   <i>{detail.opening_crawl}</i>
                 </p>
               </div>
+
               <div className="card-title custom-space-between">
                 <h3>Characters: </h3>
                 {detail.characters.map((char: ArrayData) => (
@@ -79,6 +79,7 @@ const FilmDetailPage = () => {
                   </p>
                 ))}
               </div>
+
               <div className="card-title custom-space-between">
                 <h3>Planets: </h3>
                 {detail.planets.map((plan) => (

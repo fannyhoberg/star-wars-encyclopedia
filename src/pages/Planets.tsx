@@ -25,10 +25,6 @@ const Planets = () => {
 
     try {
       const data = await StarWarsAPI.getPlanets(page);
-      await new Promise((r) => setTimeout(r, 1000));
-
-      console.log("data", data);
-
       setResult(data);
     } catch (err) {
       if (err instanceof Error) {

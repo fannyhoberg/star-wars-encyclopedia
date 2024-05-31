@@ -25,8 +25,6 @@ const Vehicles = () => {
 
     try {
       const data = await StarWarsAPI.getVehicles(page);
-      await new Promise((r) => setTimeout(r, 1000));
-
       setResult(data);
     } catch (err) {
       if (err instanceof Error) {

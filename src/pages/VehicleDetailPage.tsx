@@ -24,9 +24,6 @@ const VehicleDetailPage = () => {
 
       try {
         const data = await StarWarsAPI.getVehicle(Number(id));
-
-        console.log("data", data);
-
         setDetail(data);
       } catch (err) {
         if (err instanceof Error) {

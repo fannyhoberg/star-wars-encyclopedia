@@ -25,10 +25,6 @@ const Species = () => {
 
     try {
       const data = await StarWarsAPI.getAllSpecies(page);
-      await new Promise((r) => setTimeout(r, 1000));
-
-      console.log("data", data);
-
       setResult(data);
     } catch (err) {
       if (err instanceof Error) {

@@ -24,7 +24,6 @@ const SpeciesDetailPage = () => {
 
       try {
         const data = await StarWarsAPI.getSpecies(Number(id));
-
         setDetail(data);
       } catch (err) {
         if (err instanceof Error) {

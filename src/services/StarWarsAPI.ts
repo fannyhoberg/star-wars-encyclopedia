@@ -14,7 +14,7 @@ import {
   VehicleDetails,
 } from "../Types/StarWarsAPI.types";
 
-const FAKE_DELAY = 1200;
+const FAKE_DELAY = 2200;
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // Films

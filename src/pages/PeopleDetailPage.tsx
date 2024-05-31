@@ -21,7 +21,6 @@ const PeopleDetailPage = () => {
 
       try {
         const data = await StarWarsAPI.getPerson(Number(id));
-
         setDetail(data);
       } catch (err) {
         if (err instanceof Error) {

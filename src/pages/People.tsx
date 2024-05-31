@@ -16,9 +16,6 @@ const People = () => {
 
   const currentPage = parseInt(searchParams.get("page") || "1");
 
-  console.log("currentPage", currentPage);
-  console.log("page", page);
-
   const navigate = useNavigate();
 
   const people = async (page: number) => {
@@ -28,10 +25,6 @@ const People = () => {
 
     try {
       const data = await StarWarsAPI.getPeople(page);
-      await new Promise((r) => setTimeout(r, 1000));
-
-      console.log("data", data);
-
       setResult(data);
     } catch (err) {
       if (err instanceof Error) {
