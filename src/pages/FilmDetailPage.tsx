@@ -103,15 +103,24 @@ const FilmDetailPage = () => {
                 ))}
               </div>
 
-              {/* <div className="card-title">
-                    <h4>Starships: </h4>
-                    {detail.starships.map((star) => (
-                      <p>{star.name}</p>
-                    ))}
-                  </div>
+              <div className="card-title">
+                <h4>Starships: </h4>
+                {detail.starships.length > 0 ? (
+                  detail.starships.map((star) => (
+                    <p
+                      key={star.id}
+                      className="custom-link"
+                      onClick={() => navigate(`/starships/${star.id}`)}
+                    >
+                      <strong>{star.name}</strong>
+                    </p>
+                  ))
+                ) : (
+                  <p>0</p>
+                )}
+              </div>
 
-                  
-                  <div className="card-title">
+              {/* <div className="card-title">
                     <h4>Vehicles: </h4>
                     {detail.vehicles.map((vehicle) => (
                       <p>{vehicle.name}</p>

@@ -97,6 +97,21 @@ const PeopleDetailPage = () => {
               ) : (
                 <p>Human?</p>
               )}
+
+              <h4>Starships: </h4>
+              {detail.starships.length > 0 ? (
+                detail.starships.map((star) => (
+                  <p
+                    key={star.id}
+                    className="custom-link"
+                    onClick={() => navigate(`/starships/${star.id}`)}
+                  >
+                    <strong>{star.name}</strong>
+                  </p>
+                ))
+              ) : (
+                <p>0</p>
+              )}
             </div>
           </div>
         </Container>
