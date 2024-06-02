@@ -6,7 +6,7 @@ import logo from "../assets/images/star-wars-seeklogo.svg";
 
 const Navigation = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="md">
+    <Navbar bg="dark" variant="dark" expand="md" sticky="top">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
           <img
