@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import * as StarWarsAPI from "../services/StarWarsAPI";
-
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrayData, ArrayFilm, PeopleDetail } from "../Types/StarWarsAPI.types";
 import { Button, Container } from "react-bootstrap";
